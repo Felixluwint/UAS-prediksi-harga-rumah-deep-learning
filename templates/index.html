@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediksi Harga Rumah</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="card">
+    <h1>Prediksi Harga Rumah</h1>
+    <p class="subtitle">Deep Learning Regression</p>
+
+    {% if error %}
+    <div class="error">{{ error }}</div>
+    {% endif %}
+
+    <form method="post">
+        <input type="number" name="luas_tanah" placeholder="Luas Tanah (m²)" required>
+        <input type="number" name="luas_bangunan" placeholder="Luas Bangunan (m²)" required>
+        <input type="number" name="kamar_tidur" placeholder="Jumlah Kamar Tidur" required>
+        <input type="number" name="kamar_mandi" placeholder="Jumlah Kamar Mandi" required>
+        <input type="number" step="0.1" name="jarak_pusat_kota" placeholder="Jarak ke Pusat Kota (km)" required>
+        <input type="number" name="usia_bangunan" placeholder="Usia Bangunan (tahun)" required>
+
+        <button type="submit">Hitung Prediksi</button>
+    </form>
+
+    {% if result %}
+    <div class="result">
+        <h2>Hasil Prediksi</h2>
+        <p class="price">Rp {{ result }} juta</p>
+        <p class="range">Rentang: Rp {{ low }} – {{ high }} juta</p>
+    </div>
+    {% endif %}
+</div>
+
+</body>
+</html>
